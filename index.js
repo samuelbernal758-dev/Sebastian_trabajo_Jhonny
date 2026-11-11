@@ -32,3 +32,16 @@ boton.addEventListener("click", () => {
 function actualizarContador() {
   textoContador.textContent = likes;
 }
+
+botonRestar.addEventListener("click", () => {
+  if (likes > 0) {
+    likes--;
+    actualizarContador();
+  }
+});
+
+botonReiniciar.addEventListener("click", () => {
+  likes = 0;
+  actualizarContador();
+  tabla.innerHTML = "";
+});
