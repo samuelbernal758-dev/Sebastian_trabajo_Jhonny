@@ -31,6 +31,7 @@ boton.addEventListener("click", () => {
 
 function actualizarContador() {
   textoContador.textContent = likes;
+  textoContador.classList.toggle("alto", likes > 10);
 }
 
 botonRestar.addEventListener("click", () => {
