@@ -20,21 +20,41 @@ export default function App() {
     const s = String(ahora.getSeconds()).padStart(2, "0");
     return `${h}:${m}:${s}`;
   };
-  return (
-    <View style={estilos.body}>
-      <View style={estilos.card}>
-        <Text style={estilos.titulo}>Interactividad con el DOM</Text>
-        <Text style={estilos.subtitulo}>
-          Haz clic en el botón para incrementar el contador y registrar la hora exacta.
-        </Text>
-          <Text style={estilos.counterBox}>{contador}</Text>
+return (
+  <View style={estilos.body}>
+    <View style={estilos.card}>
+      <Text style={estilos.titulo}>Interactividad con el DOM</Text>
+      <Text style={estilos.subtitulo}>
+        Haz clic en el botón para incrementar el contador y registrar la hora exacta.
+      </Text>
+      <Text style={estilos.counterBox}>{contador}</Text>
 
-          <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
-            <Text style={estilos.btnText}>¡Haz Clic Aquí!</Text>
-          </TouchableOpacity>
+      <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
+        <Text style={estilos.btnText}>¡Haz Clic Aquí!</Text>
+      </TouchableOpacity>
+
+      <View style={estilos.tableContainer}>
+        <View style={estilos.tableHeader}>
+          <Text style={[estilos.th, estilos.cellNumero]}>Nº Clic</Text>
+          <Text style={[estilos.th, estilos.cellHora]}>Hora</Text>
+        </View>
+
+        <ScrollView style={estilos.tableBody}>
+          {registros.map((item, index) => (
+            <View
+              key={item.id}
+              style={[estilos.tr, index % 2 === 0 ? estilos.trEven : null]}
+            >
+              <Text style={[estilos.td, estilos.cellNumero]}>{item.numero}</Text>
+              <Text style={[estilos.td, estilos.cellHora]}>{item.hora}</Text>
+            </View>
+          ))}
+        </ScrollView>
       </View>
-    </View>
-  );
+
+    </View>  
+  </View>  
+);
 }
 
 const estilos = StyleSheet.create({
@@ -48,4 +68,13 @@ const estilos = StyleSheet.create({
   counterBox: { fontSize: 56, fontWeight: "bold", color: "#3498db", textAlign: "center", marginBottom: 16 },
   btnClick: { backgroundColor: "#2ecc71", padding: 12, borderRadius: 8, elevation: 3, alignItems: "center", marginBottom: 20 },
   btnText: { color: "#fff", fontWeight: "bold" },
+  tableContainer: { borderWidth: 1, borderColor: "#e0e0e0", borderRadius: 8, overflow: "hidden" },
+  tableHeader: { flexDirection: "row", backgroundColor: "#f8f9fa", borderBottomWidth: 1, borderBottomColor: "#e0e0e0" },
+  tableBody: { maxHeight: 170 },
+  tr: { flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#e0e0e0", backgroundColor: "#ffffff" },
+  trEven: { backgroundColor: "#fafafa" },
+  th: { color: "#7f8c8d", fontWeight: "600", fontSize: 14, padding: 10, textAlign: "center" },
+  td: { color: "#333", fontSize: 14, padding: 10, textAlign: "center" },
+  cellNumero: { flex: 1 },
+  cellHora: { flex: 1.5 },
 });
