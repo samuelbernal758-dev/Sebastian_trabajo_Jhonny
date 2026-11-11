@@ -10,7 +10,7 @@ export default function App() {
   const incrementarContador = () => {
       const nuevo = contador + 1;
       setContador(nuevo);
-      setRegistros([{ id: nuevo, numero: nuevo, hora: obtenerHora() }, ...registros]);
+      setRegistros([{ id: Date.now(), numero: nuevo, hora: obtenerHora() }, ...registros]);
     };
 
   const obtenerHora = () => {
@@ -29,6 +29,7 @@ export default function App() {
     setContador(0);
     setRegistros([]);
   };
+
 return (
   <View style={estilos.body}>
     <View style={estilos.card}>
