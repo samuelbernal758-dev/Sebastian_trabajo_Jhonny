@@ -1,10 +1,25 @@
 import { useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from "react-native";
 
+type Registro = { id: number; numero: number; hora: string };
+
 export default function App() {
   const [contador, setContador] = useState(0);
-  const incrementarContador = () => setContador(contador + 1);
+  const incrementarContador = () => {
+      const nuevo = contador + 1;
+      setContador(nuevo);
+      setRegistros([{ id: nuevo, numero: nuevo, hora: obtenerHora() }, ...registros]);
+    };
 
+  const [registros, setRegistros] = useState<Registro[]>([]);
+
+  const obtenerHora = () => {
+    const ahora = new Date();
+    const h = String(ahora.getHours()).padStart(2, "0");
+    const m = String(ahora.getMinutes()).padStart(2, "0");
+    const s = String(ahora.getSeconds()).padStart(2, "0");
+    return `${h}:${m}:${s}`;
+  };
   return (
     <View style={estilos.body}>
       <View style={estilos.card}>
