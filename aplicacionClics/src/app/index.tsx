@@ -36,7 +36,7 @@ return (
       <Text style={estilos.subtitulo}>
         Haz clic en el botón para incrementar el contador y registrar la hora exacta.
       </Text>
-      <Text style={estilos.counterBox}>{contador}</Text>
+      <Text style={[estilos.counterBox, contador > 10 && estilos.counterAlto]}>{contador}</Text>
 
       <View style={estilos.fila}>
         <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
@@ -83,7 +83,7 @@ const estilos = StyleSheet.create({
   titulo: { fontSize: 24, fontWeight: "800", color: "#2c3e50", textAlign: "center" },
   subtitulo: { fontSize: 13, color: "#555", textAlign: "center", marginVertical: 10 },
   counterBox: { fontSize: 56, fontWeight: "bold", color: "#3498db", textAlign: "center", marginBottom: 16 },
- fila: { flexDirection: "row", justifyContent: "center", gap: 8, marginBottom: 20 },
+  fila: { flexDirection: "row", justifyContent: "center", gap: 8, marginBottom: 20 },
   btnClick: { backgroundColor: "#2ecc71", paddingVertical: 12, paddingHorizontal: 14, borderRadius: 8, elevation: 3 },
   btnRestar: { backgroundColor: "#f39c12", paddingVertical: 12, paddingHorizontal: 14, borderRadius: 8, elevation: 3 },
   btnReset: { backgroundColor: "#95a5a6", paddingVertical: 12, paddingHorizontal: 14, borderRadius: 8, elevation: 3 },
@@ -97,4 +97,5 @@ const estilos = StyleSheet.create({
   td: { color: "#333", fontSize: 14, padding: 10, textAlign: "center" },
   cellNumero: { flex: 1 },
   cellHora: { flex: 1.5 },
+  counterAlto: { color: "#e74c3c" },
 });
