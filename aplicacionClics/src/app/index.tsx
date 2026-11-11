@@ -5,6 +5,7 @@ type Registro = { id: number; numero: number; hora: string };
 
 export default function App() {
   const [contador, setContador] = useState(0);
+  
   const incrementarContador = () => {
       const nuevo = contador + 1;
       setContador(nuevo);
@@ -27,7 +28,11 @@ export default function App() {
         <Text style={estilos.subtitulo}>
           Haz clic en el botón para incrementar el contador y registrar la hora exacta.
         </Text>
-        <Text style={estilos.counterBox}>{contador}</Text>
+          <Text style={estilos.counterBox}>{contador}</Text>
+
+          <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
+            <Text style={estilos.btnText}>¡Haz Clic Aquí!</Text>
+          </TouchableOpacity>
       </View>
     </View>
   );
