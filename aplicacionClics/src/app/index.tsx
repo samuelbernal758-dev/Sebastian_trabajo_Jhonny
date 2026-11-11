@@ -5,14 +5,13 @@ type Registro = { id: number; numero: number; hora: string };
 
 export default function App() {
   const [contador, setContador] = useState(0);
+  const [registros, setRegistros] = useState<Registro[]>([]);
   
   const incrementarContador = () => {
       const nuevo = contador + 1;
       setContador(nuevo);
       setRegistros([{ id: nuevo, numero: nuevo, hora: obtenerHora() }, ...registros]);
     };
-
-  const [registros, setRegistros] = useState<Registro[]>([]);
 
   const obtenerHora = () => {
     const ahora = new Date();
