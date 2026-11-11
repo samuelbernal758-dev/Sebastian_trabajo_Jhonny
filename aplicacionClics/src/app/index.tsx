@@ -20,6 +20,15 @@ export default function App() {
     const s = String(ahora.getSeconds()).padStart(2, "0");
     return `${h}:${m}:${s}`;
   };
+
+  const restarContador = () => {
+    if (contador > 0) setContador(contador - 1);
+  };
+
+  const reiniciar = () => {
+    setContador(0);
+    setRegistros([]);
+  };
 return (
   <View style={estilos.body}>
     <View style={estilos.card}>
@@ -29,9 +38,17 @@ return (
       </Text>
       <Text style={estilos.counterBox}>{contador}</Text>
 
-      <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
-        <Text style={estilos.btnText}>¡Haz Clic Aquí!</Text>
-      </TouchableOpacity>
+      <View style={estilos.fila}>
+        <TouchableOpacity style={estilos.btnClick} onPress={incrementarContador}>
+          <Text style={estilos.btnText}>¡Haz Clic Aquí!</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={estilos.btnRestar} onPress={restarContador}>
+          <Text style={estilos.btnText}>Restar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={estilos.btnReset} onPress={reiniciar}>
+          <Text style={estilos.btnText}>Reiniciar</Text>
+        </TouchableOpacity>
+      </View>
 
       <View style={estilos.tableContainer}>
         <View style={estilos.tableHeader}>
@@ -66,7 +83,10 @@ const estilos = StyleSheet.create({
   titulo: { fontSize: 24, fontWeight: "800", color: "#2c3e50", textAlign: "center" },
   subtitulo: { fontSize: 13, color: "#555", textAlign: "center", marginVertical: 10 },
   counterBox: { fontSize: 56, fontWeight: "bold", color: "#3498db", textAlign: "center", marginBottom: 16 },
-  btnClick: { backgroundColor: "#2ecc71", padding: 12, borderRadius: 8, elevation: 3, alignItems: "center", marginBottom: 20 },
+ fila: { flexDirection: "row", justifyContent: "center", gap: 8, marginBottom: 20 },
+  btnClick: { backgroundColor: "#2ecc71", paddingVertical: 12, paddingHorizontal: 14, borderRadius: 8, elevation: 3 },
+  btnRestar: { backgroundColor: "#f39c12", paddingVertical: 12, paddingHorizontal: 14, borderRadius: 8, elevation: 3 },
+  btnReset: { backgroundColor: "#95a5a6", paddingVertical: 12, paddingHorizontal: 14, borderRadius: 8, elevation: 3 },
   btnText: { color: "#fff", fontWeight: "bold" },
   tableContainer: { borderWidth: 1, borderColor: "#e0e0e0", borderRadius: 8, overflow: "hidden" },
   tableHeader: { flexDirection: "row", backgroundColor: "#f8f9fa", borderBottomWidth: 1, borderBottomColor: "#e0e0e0" },
