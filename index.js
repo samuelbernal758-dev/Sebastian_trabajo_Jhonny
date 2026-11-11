@@ -28,3 +28,7 @@ boton.addEventListener("click", () => {
 
   tabla.prepend(fila); 
 });
+
+function actualizarContador() {
+  textoContador.textContent = likes;
+}
