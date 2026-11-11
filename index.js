@@ -13,3 +13,18 @@ function obtenerHora() {
   const s = String(ahora.getSeconds()).padStart(2, "0");
   return `${h}:${m}:${s}`;
 }
+
+boton.addEventListener("click", () => {
+  likes++;
+  actualizarContador();
+
+  const fila = document.createElement("tr");
+  const celdaNumero = document.createElement("td");
+  const celdaHora = document.createElement("td");
+  celdaNumero.textContent = likes;
+  celdaHora.textContent = obtenerHora();
+  fila.appendChild(celdaNumero);
+  fila.appendChild(celdaHora);
+
+  tabla.prepend(fila); 
+});
